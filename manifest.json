@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "UI Extensions",
+    "description": "UI checker",
+    "version": "1.0",
+    "action": {
+        "default_popup": "checker.html",
+        "default_icon": "qa.png"
+    }
+}
