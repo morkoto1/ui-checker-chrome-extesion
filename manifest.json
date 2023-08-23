@@ -4,8 +4,9 @@
     "description": "UI checker",
     "version": "1.0",
     "action": {
-        "default_popup": "checker.html",
-        "default_icon": "qa.png"
+        "default_popup": "popup/checker.html",
+        "default_icon": "images/qa.png",
+        "default_title": "Check UI on the page"
     },
     "content_scripts": [
         {
@@ -13,7 +14,8 @@
                 "scripts/contentChecker.js"
             ],
             "matches": [
-                "https://*"
+                "https://developer.chrome.com/docs/extensions/*",
+                "https://developer.chrome.com/docs/webstore/*"
             ]
         }
     ]
