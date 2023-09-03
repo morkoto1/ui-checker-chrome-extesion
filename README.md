@@ -1,1 +1,1 @@
-# ui-checker-chrome-extesion
+# ui-checker-chrome-extension

@@ -15,7 +15,8 @@ function getTextNodesIn(elem) {
     return textNodes;
 }
 
-const textElements = Array.from(document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span, li, td, th'))
+//const textElements = Array.from(document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span, li, td, th'))
+const textElements = Array.from(document.querySelectorAll('p'))
     .filter(el => el.textContent.trim() !== '');
 
 const temporaryDivs = [];
@@ -39,12 +40,14 @@ textElements.forEach(el => {
     });
 });
 
+let hasOverlap = false;
+
 for (let i = 0; i < temporaryDivs.length; i++) {
     for (let j = i + 1; j < temporaryDivs.length; j++) {
         if (doRectsOverlap(temporaryDivs[i].getBoundingClientRect(), temporaryDivs[j].getBoundingClientRect())) {
-            // Highlight the original elements if their text overlaps
             textElements[i].style.backgroundColor = 'yellow';
             textElements[j].style.backgroundColor = 'yellow';
+            hasOverlap = true;
         }
     }
 }
@@ -53,3 +56,6 @@ for (let i = 0; i < temporaryDivs.length; i++) {
 temporaryDivs.forEach(div => {
     document.body.removeChild(div);
 });
+
+// Send a message back to the popup script with the result
+chrome.runtime.sendMessage({ hasOverlap: hasOverlap });

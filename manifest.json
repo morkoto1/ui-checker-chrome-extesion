@@ -3,10 +3,18 @@
     "name": "UI Extensions",
     "description": "UI checker",
     "version": "1.0",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs"
+    ],
     "action": {
         "default_popup": "popup/checker.html",
         "default_icon": "images/qa.png",
         "default_title": "Check UI on the page"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'; font-src 'self' https://fonts.gstatic.com;"
     },
     "content_scripts": [
         {
